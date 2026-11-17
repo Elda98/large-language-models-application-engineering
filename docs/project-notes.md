@@ -18,7 +18,7 @@ This document records the state verified from the repository on 17 November 2026
 
 The uploaded learner notebook was compared with the official reference notebook. The functional cell code matched; differences were limited to missing/leading cell-label comments and trailing blank lines. The repository copy now uses the official labeled cell source blocks while preserving the learner notebook's captured outputs and execution counts.
 
-The 14 cells were also executed sequentially in a fresh Python namespace under Python 3.13.5. Every cell completed without an exception. The execution created all seven expected JSON result files and `murshid_submission.zip`.
+The notebook's 14 cells are saved with Colab execution counts and the expected milestone outputs. The seven JSON result files in `results/core/` were copied from the Colab-generated `murshid_submission.zip` produced by Cell 14. Separately, the GitHub Actions workflow executes the notebook cells from a clean test directory and validates the outputs on Python 3.11 and 3.13.
 
 Observed checks from that run:
 - Day 1: three expected mock responses.
@@ -27,7 +27,7 @@ Observed checks from that run:
 - Day 4: mock calls 3 without cache and 1 with cache; hits `false, true, true`; hit rate 66.7%; zero external API calls.
 - Final mode: `mock`; hypothetical cost is explicitly an illustration, not billed usage.
 
-The code execution was a clean-namespace check using the uploaded notebook's code. Python latency and trace IDs are generated values and may differ on each run. The user's Colab restart/run-all confirmation is separate from this independent check.
+Trace IDs and Python latency values in the saved result archive are from that Colab run and vary between runs. CI execution is a separate reproducibility check; it does not replace the Colab-generated result archive.
 
 ## Core architecture and boundaries
 
@@ -94,7 +94,7 @@ Run from the repository root:
 python -m unittest discover -s tests -v
 ```
 
-Seven offline standard-library test methods cover 14-cell structure, mock mode, full execution and export, repeat execution, ticket schema rejections, ownership/read-only behavior, input guards, golden cases, cache TTL/version isolation, status-cache exclusion and minimal metrics fields. The test suite passed in the independent local verification run.
+Ten offline standard-library test methods cover the 14-cell structure and order, full execution and export, daily milestones, repeat execution, standard-library-only imports, ticket schema rejection, ownership and read-only behavior, input guards, cache TTL/version isolation and status exclusion, and consistency of the seven committed result files. GitHub Actions runs the suite on Python 3.11 and 3.13.
 
 ## Remaining submission checks
 
