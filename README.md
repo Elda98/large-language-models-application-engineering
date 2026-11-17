@@ -12,7 +12,7 @@ A four-day educational project built during **LLM Application Engineering — SD
 - [Synthetic dataset export](data/synthetic_data.json)
 - [Technical documentation](docs/technical.md)
 - [Project notes and limitations](docs/project-notes.md)
-- [Core results](results/core/)
+- [Core results](results/core/) · [execution results guide](results/README.md) · [offline tests](tests/test_notebook.py)
 
 ### Optional homework (separate notebooks)
 - [Day 1 — Real local model](homework/day1/day1_real_model_Raghad.ipynb) · [report](homework/day1/live_demo_result.json)
@@ -40,7 +40,7 @@ The optional Day 1 and Day 4 exercises load `google/flan-t5-small` locally and r
 5. Download `murshid_submission.zip` from the Colab Files panel; it contains JSON results, not the notebook itself.
 6. Keep homework notebooks separate from this cumulative core notebook.
 
-The core requires no installation, model download, API key, GPU or paid service. The homework model demonstrations require internet to download Python packages and model weights, but not a paid endpoint.
+Run the offline checks from the repository root with `python -m unittest discover -s tests -v`.\n\nThe core requires no installation, model download, API key, GPU or paid service. The homework model demonstrations require internet to download Python packages and model weights, but not a paid endpoint.
 
 ## Results and interpretation
 
