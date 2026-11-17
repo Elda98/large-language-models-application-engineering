@@ -40,5 +40,5 @@
       "inference_seconds": 0.181
     }
   ],
-  "manual_review": "All three answers are semantically correct and supported by the synthetic context. The keyword indicator is not semantic accuracy."
+  "manual_review": "Check every answer for correct meaning and unsupported facts. Record failures; do not edit expected criteria to force a pass."
 }
