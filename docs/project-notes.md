@@ -1,48 +1,56 @@
 # Murshid Mini — Technical Project Notes
 
-## Evidence reviewed
+## Verified project scope
 
-These notes describe files currently committed in this repository and the official course submission guide. They do not assume that missing files exist.
+This is a four-day mock-mode educational application. Its purpose is to teach the engineering around a model-shaped interface, not to train a model or deploy a government service.
 
-## Current repository state
+- Core mode: `mock`; deterministic `FakeClient`; zero external API calls.
+- Runtime: Python 3, CPU, standard library only; no paid API, key, model download or extra package in the core notebook.
+- All data: synthetic fixtures authored for the course.
 
-- Homework folders exist for Days 1–4.
-- Day 1 includes a real-local-model notebook and `live_demo_result.json`.
-- Day 2 includes a tool-validation notebook.
-- Day 3 includes an error-handling notebook.
-- Day 4 includes a real-model evaluation notebook and `evaluation_result.json`.
-- The required cumulative core notebook `notebooks/murshid.ipynb` is absent.
-- No root README existed before this audit; the repository README now documents the current state and clearly marks the missing core deliverable.
-- Core result artifacts such as `day1_results.json`, `day2_results.json`, `day3_results.json`, `day4_results.json`, `final_report.json`, and `metrics.json` are not present in the repository tree.
+## Architecture
 
-## Homework evidence
+Input → input guard → rule-based ticket extraction → schema and business-rule validation → public mock answer OR read-only status tool → output validation → response and minimal metrics.
 
-### Day 1
-The notebook contains 8 cells (4 code, 4 Markdown). Its committed report identifies `google/flan-t5-small`, CPU execution, one generated answer, token counts, inference time, and zero external inference API calls.
+Day 4 wraps only the two exact public directory questions in a cache. Status requests, malformed tickets and guarded requests bypass it. The cache key includes question, language, model label, prompt version and directory version. TTL is 300 seconds. Cached entries contain only the public answer and creation time, not status or session data.
 
-### Day 2
-The notebook contains 3 cells (2 code, 1 Markdown). Its saved output reports 7 passing checks and confirms that records remain unchanged.
+## Components and boundaries
 
-### Day 3
-The notebook contains 3 cells (2 code, 1 Markdown), including an empty trailing code cell. Its saved code output demonstrates three caught `ValueError` cases and a valid input. One code cell has no saved execution count/output, so rerunning the notebook from a fresh runtime is recommended before final submission. The filename currently includes `(1)`; consider renaming it to a clean filename.
+- `FakeClient.generate`: finite lookup; increments the mock-call counter; never calls an API.
+- `ask`: baseline response with trace ID, answer, model label and measured Python latency.
+- `extract_ticket`: small rule/regex parser, not general NLP.
+- `validate_ticket`: schema and business-rule checks.
+- `check_status`: local read-only lookup with ownership check.
+- `route`: handles clarification, public FAQ, status, and unsupported actions.
+- `build_prompt`: versioned teaching artifact; the mock does not execute a real prompt.
+- `guard_input`: limited length, example injection-string, and ten-digit pattern checks; not comprehensive security.
+- `run_pipeline`: coordinates validation and routing.
+- `evaluate`: ten fixed cases, no network or model judge.
+- `run_app`: public FAQ cache wrapper and minimal operational metrics.
 
-### Day 4
-The notebook contains 4 cells (3 code, 1 Markdown). It includes the dependency compatibility adjustment to `sentencepiece==0.2.1` for the Python 3.13 environment and a manual-evaluation Markdown section. The committed report contains E01–E03, keyword hits 3/3, token counts, inference times, and zero external inference API calls. The keyword indicator is not a semantic-accuracy metric.
+## Synthetic data
 
-## Important distinction
+See [data/README.md](../data/README.md) and [data/synthetic_data.json](../data/synthetic_data.json). The fixtures include public Arabic/English service-directory answers and fictional references:
+- `REF-1001`, owned by `demo-user-1`, status `under_review`.
+- `REF-1002`, owned by `demo-user-2`, status `approved`.
+- `REF-9999` intentionally absent.
 
-- Core project mode: `mock`; do not describe it as real model inference.
-- Optional Day 1 and Day 4 homework: `real_local_model` using a locally loaded model; reports state zero external inference API calls.
-- Synthetic fixtures are educational examples, not real user records.
+A reference number is not proof of ownership. The session identity is trusted test setup, not extracted from a question. These controls illustrate authorization but are not production authentication.
 
-## Outstanding before submission
+## Generated outputs
 
-1. Upload the actual cumulative Days 1–4 Colab notebook to `notebooks/murshid.ipynb`. It is not in the current repository tree, and it must not be reconstructed from memory or replaced with a new notebook.
-2. Upload the core JSON outputs generated by the actual notebook, including the final report and metrics, if they are part of the notebook's output folder.
-3. Rerun Day 3 homework from a fresh runtime and save the executed notebook; remove its empty trailing cell and clean up its filename if desired.
-4. Verify the final repository visibility/access with the instructor's instructions.
-5. Re-open the repository root and each submitted notebook/report after the final commit.
+The core notebook writes `baseline_results.json`, `day2_results.json`, `day3_results.json`, `day4_results.json`, `final_report.json`, `metrics.json`, and `synthetic_data.json` under `murshid_outputs/`; Cell 14 packages the JSON files into `murshid_submission.zip`. Save the notebook separately.
 
-## Official course submission guidance
+Local Python latency is not model inference latency. Trace IDs and timings vary. Cache call counts and status codes are deterministic when the experiment starts with a cleared cache. The cost calculation is hypothetical and uses illustrative prices; actual external API usage and spend are zero.
 
-The course guide requests one cumulative core notebook at `notebooks/murshid.ipynb`, separate optional homework notebooks, generated result evidence, a comprehensive README, technical documentation, and meaningful commit history. The current homework files are stored in per-day subfolders; this is readable, but it differs from the flat example paths in the guide.
+## Reproducibility and tests
+
+Restart the Colab runtime and run the 14 core cells from the top, sequentially. Check the daily assertions, all ten golden cases, cache version isolation and TTL, status-cache exclusion, zero external calls, and final report. UUIDs and time values are expected to differ.
+
+## Optional homework
+
+Homework notebooks remain separate. Day 1 and Day 4 homework use a real local `google/flan-t5-small` model and do not change the core's `mode=mock`. Their package/model downloads require internet, but no paid inference API. Treat their measurements as local inference evidence and their keyword indicator as a weak proxy, not semantic accuracy.
+
+## Limitations
+
+Finite rule-based routing, synthetic records, no live language model in core, no real authentication, educational guards only, and no production readiness claim.
