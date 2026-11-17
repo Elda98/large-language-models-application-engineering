@@ -125,7 +125,7 @@ Run from the repository root:
 python -m unittest discover -s tests -v
 ```
 
-The offline standard-library test suite contains seven test methods covering:
+The offline standard-library test suite contains ten test methods covering:
 
 1. 14-cell, code-only notebook structure and mock mode.
 2. Full execution, ten-case regression and ZIP export.
@@ -134,6 +134,9 @@ The offline standard-library test suite contains seven test methods covering:
 5. Ownership checks, denied-status non-disclosure and record immutability.
 6. Input guards and golden-case contract.
 7. Cache TTL, version isolation, status exclusion and minimal metrics fields.
+8. Completeness and consistency of all seven committed core result artifacts.
+
+GitHub Actions runs this suite on Python 3.11 and 3.13 for pushes and pull requests to `main`.
 
 The course's own ten golden cases remain in the notebook and are separately checked by `evaluate`. Passing these fixed examples is not a general reliability or security guarantee.
 
