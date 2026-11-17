@@ -307,7 +307,6 @@ The attribution identifies the learning context. It does not imply that SDAIA Ac
 
 ## Project quality and contribution guides
 
-- [Course requirement and submission checklist](docs/submission-checklist.md)
 - [Contribution guidelines](CONTRIBUTING.md)
 - [Change history](CHANGELOG.md)
 - [Automated test workflow](.github/workflows/core-tests.yml)
