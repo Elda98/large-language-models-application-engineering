@@ -61,10 +61,11 @@ The Day 4 keyword check is a lexical proxy for the words “reference” and “
 | Core output files are committed | `results/core/` | [x] |
 | Offline standard-library tests are present | [`tests/test_notebook.py`](../tests/test_notebook.py) | [x] |
 | Tests run automatically on push and pull request | [GitHub Actions workflow](../.github/workflows/core-tests.yml) | [x] |
+| Automated suite checks ten cases and committed result consistency | [tests/test_notebook.py](../tests/test_notebook.py) | [x] |
 | Python 3.11 workflow job passes | [Latest Actions run](https://github.com/Elda98/large-language-models-application-engineering/actions/workflows/core-tests.yml) | [x] |
 | Python 3.13 workflow job passes | [Latest Actions run](https://github.com/Elda98/large-language-models-application-engineering/actions/workflows/core-tests.yml) | [x] |
 | Relative links in the root README resolve to repository files | Repository tree audit | [x] |
-| Temporary files and credentials are excluded from commits | `.gitignore` and final manual review | [ ] |
+| Local runtime outputs, caches and environment files have ignore rules; an automated scan found no obvious API-key, token, email or phone-number patterns in submitted notebooks/results | `.gitignore` and repository content scan | [x] |
 
 ## 5. Final handoff checks
 
@@ -73,7 +74,7 @@ These require the learner's own final confirmation and should not be inferred fr
 - [x] The repository is public.
 - [x] The repository root identifies the program, instructor and SDAIA Academy GitHub account.
 - [x] The core notebook and each completed homework are stored as separate files.
-- [ ] Review the latest notebook outputs and all uploaded files personally for private data before sending.
+- [ ] Review the latest notebook outputs and all uploaded files personally for private data before sending; automated pattern scans are not a substitute for a human review.
 - [ ] Open the repository in a signed-out/private browser window to confirm public access.
 - [ ] Send the repository root link to Meaad Al-Marri through the submission channel she specifies.
 - [ ] Keep this same repository link for later corrections.
