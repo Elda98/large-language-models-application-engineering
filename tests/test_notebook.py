@@ -197,5 +197,58 @@ class MurshidNotebookTests(unittest.TestCase):
             self.assertEqual(set(row), allowed_metric_keys)
 
 
+    def test_committed_result_artifacts_are_complete_and_consistent(self):
+        results_dir = ROOT / "results" / "core"
+        expected_files = {
+            "baseline_results.json", "day2_results.json", "day3_results.json",
+            "day4_results.json", "final_report.json", "metrics.json",
+            "synthetic_data.json",
+        }
+        self.assertEqual(
+            {path.name for path in results_dir.glob("*.json")},
+            expected_files,
+        )
+        artifacts = {
+            name: json.loads((results_dir / name).read_text(encoding="utf-8"))
+            for name in expected_files
+        }
+
+        self.assertEqual(len(artifacts["baseline_results.json"]), 3)
+        self.assertTrue(all(row["model"] == "training-mock" for row in artifacts["baseline_results.json"]))
+
+        day2_codes = [row["code"] for row in artifacts["day2_results.json"]]
+        self.assertEqual(
+            day2_codes,
+            ["under_review", "needs_clarification", "not_found", "unsupported_action", "access_denied"],
+        )
+
+        day3 = artifacts["day3_results.json"]
+        self.assertEqual((day3["mode"], day3["passed"], day3["total"]), ("mock", 10, 10))
+
+        day4 = artifacts["day4_results.json"]
+        self.assertEqual(day4["without_cache_mock_calls"], 3)
+        self.assertEqual(day4["with_cache_mock_calls"], 1)
+        self.assertEqual(day4["cache_hit"], [False, True, True])
+        self.assertEqual(day4["hit_rate_percent"], 66.7)
+        self.assertEqual(day4["actual_external_api_calls"], 0)
+
+        final_report = artifacts["final_report.json"]
+        self.assertEqual(final_report["mode"], "mock")
+        self.assertEqual(final_report["golden_tests"]["passed"], 10)
+        self.assertEqual(final_report["cache_experiment"], day4)
+
+        metrics = artifacts["metrics.json"]
+        self.assertTrue(metrics)
+        expected_metric_fields = {
+            "trace_id", "mode", "code", "cache_hit",
+            "mock_calls", "tool_calls", "latency_ms",
+        }
+        for row in metrics:
+            self.assertEqual(set(row), expected_metric_fields)
+
+        records = artifacts["synthetic_data.json"]["records"]
+        self.assertEqual(set(records), {"REF-1001", "REF-1002"})
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)
