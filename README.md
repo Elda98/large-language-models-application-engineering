@@ -225,6 +225,7 @@ The repository includes ten offline test methods covering notebook structure and
 │   └── synthetic_data.json
 ├── docs/
 │   ├── project-notes.md
+│   ├── submission-checklist.md
 │   └── technical.md
 ├── homework/
 │   ├── day1/
