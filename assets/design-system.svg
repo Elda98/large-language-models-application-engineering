@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="520" viewBox="0 0 1600 520" role="img" aria-labelledby="title desc">
+  <title id="title">Murshid Mini visual design system</title>
+  <desc id="desc">A restrained navy, violet, blue and cyan palette with neutral text colors and typography guidance.</desc>
+  <defs>
+    <linearGradient id="canvas" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0B1020"/>
+      <stop offset="1" stop-color="#15152D"/>
+    </linearGradient>
+    <linearGradient id="brand" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#8B5CF6"/>
+      <stop offset="1" stop-color="#60A5FA"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="520" rx="28" fill="url(#canvas)"/>
+  <g font-family="Inter,Segoe UI,Arial,sans-serif">
+    <text x="72" y="76" fill="#F8FAFC" font-size="34" font-weight="700">Murshid Mini / Visual language</text>
+    <text x="72" y="112" fill="#94A3B8" font-size="18">A focused palette for hierarchy, technical detail and calm reading</text>
+    <rect x="72" y="145" width="1456" height="2" rx="1" fill="url(#brand)" opacity=".9"/>
+    <g transform="translate(72 184)">
+      <rect width="216" height="190" rx="18" fill="#0B1020" stroke="#64748B" stroke-opacity=".55"/>
+      <text x="20" y="34" fill="#94A3B8" font-size="13" font-weight="700" letter-spacing="1.5">01 / INK</text>
+      <text x="20" y="154" fill="#F8FAFC" font-size="23" font-weight="700">#0B1020</text>
+      <text x="20" y="177" fill="#94A3B8" font-size="13">Primary canvas</text>
+    </g>
+    <g transform="translate(318 184)">
+      <rect width="216" height="190" rx="18" fill="#15152D" stroke="#64748B" stroke-opacity=".55"/>
+      <text x="20" y="34" fill="#94A3B8" font-size="13" font-weight="700" letter-spacing="1.5">02 / PANEL</text>
+      <text x="20" y="154" fill="#F8FAFC" font-size="23" font-weight="700">#15152D</text>
+      <text x="20" y="177" fill="#94A3B8" font-size="13">Surface and depth</text>
+    </g>
+    <g transform="translate(564 184)">
+      <rect width="216" height="190" rx="18" fill="#8B5CF6"/>
+      <text x="20" y="34" fill="#F5F3FF" font-size="13" font-weight="700" letter-spacing="1.5">03 / PRIMARY</text>
+      <text x="20" y="154" fill="#FFFFFF" font-size="23" font-weight="700">#8B5CF6</text>
+      <text x="20" y="177" fill="#F5F3FF" font-size="13">Brand emphasis</text>
+    </g>
+    <g transform="translate(810 184)">
+      <rect width="216" height="190" rx="18" fill="#A78BFA"/>
+      <text x="20" y="34" fill="#2E1065" font-size="13" font-weight="700" letter-spacing="1.5">04 / LAVENDER</text>
+      <text x="20" y="154" fill="#1E1B4B" font-size="23" font-weight="700">#A78BFA</text>
+      <text x="20" y="177" fill="#2E1065" font-size="13">Soft highlight</text>
+    </g>
+    <g transform="translate(1056 184)">
+      <rect width="216" height="190" rx="18" fill="#60A5FA"/>
+      <text x="20" y="34" fill="#172554" font-size="13" font-weight="700" letter-spacing="1.5">05 / BLUE</text>
+      <text x="20" y="154" fill="#172554" font-size="23" font-weight="700">#60A5FA</text>
+      <text x="20" y="177" fill="#172554" font-size="13">Secondary signal</text>
+    </g>
+    <g transform="translate(1302 184)">
+      <rect width="226" height="190" rx="18" fill="#38BDF8"/>
+      <text x="20" y="34" fill="#082F49" font-size="13" font-weight="700" letter-spacing="1.5">06 / CYAN</text>
+      <text x="20" y="154" fill="#082F49" font-size="23" font-weight="700">#38BDF8</text>
+      <text x="20" y="177" fill="#082F49" font-size="13">Metrics and cues</text>
+    </g>
+    <g transform="translate(72 420)">
+      <rect width="10" height="10" rx="5" fill="#F8FAFC"/>
+      <text x="24" y="11" fill="#F8FAFC" font-size="15" font-weight="600">Text: #F8FAFC</text>
+      <rect x="250" width="10" height="10" rx="5" fill="#94A3B8"/>
+      <text x="274" y="11" fill="#94A3B8" font-size="15" font-weight="600">Muted: #94A3B8</text>
+      <text x="720" y="11" fill="#CBD5E1" font-size="15">Typography: Inter / Segoe UI for headings and body · monospace for code and identifiers</text>
+    </g>
+  </g>
+</svg>
