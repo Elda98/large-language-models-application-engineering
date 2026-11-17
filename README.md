@@ -11,6 +11,7 @@ Instructor: Meaad Al-Marri
 ![Environment](https://img.shields.io/badge/Environment-Google%20Colab%20%7C%20CPU-525252?style=flat-square)
 ![Core mode](https://img.shields.io/badge/Core%20mode-Mock-0F766E?style=flat-square)
 ![Notebook](https://img.shields.io/badge/Core%20notebook-14%20cells-334155?style=flat-square)
+[![Core notebook checks](https://github.com/Elda98/large-language-models-application-engineering/actions/workflows/core-tests.yml/badge.svg?branch=main)](https://github.com/Elda98/large-language-models-application-engineering/actions/workflows/core-tests.yml)
 
 </div>
 
@@ -35,6 +36,7 @@ The core application uses a deterministic `FakeClient` and a small fictional dat
 - [Optional homework](#optional-homework)
 - [Limitations and next steps](#limitations-and-next-steps)
 - [Course attribution](#course-attribution)
+- [Project quality and contribution guides](#project-quality-and-contribution-guides)
 
 ## Project overview
 
@@ -209,7 +211,7 @@ From the repository root, run:
 python -m unittest discover -s tests -v
 ```
 
-The repository includes seven additional offline test methods covering notebook structure, execution, repeatability, ticket validation, ownership, input guards, and cache behavior. The current check run completed with **7 tests passing**. These checks supplement the ten golden cases in the notebook; they do not replace them.
+The repository includes ten offline test methods covering notebook structure and cell order, full execution and export, daily milestones, repeatability, standard-library imports, ticket validation, ownership, input guards, cache behavior, and consistency of the committed result files. GitHub Actions runs the suite on Python 3.11 and Python 3.13 for pushes and pull requests. The latest workflow run passed on both versions. These checks supplement the ten golden cases in the notebook; they do not replace them.
 
 ## Repository structure
 
@@ -239,8 +241,14 @@ The repository includes seven additional offline test methods covering notebook 
 │       ├── final_report.json
 │       ├── metrics.json
 │       └── synthetic_data.json
-└── tests/
-    └── test_notebook.py
+├── tests/
+│   └── test_notebook.py
+├── .github/
+│   └── workflows/
+│       └── core-tests.yml
+├── CONTRIBUTING.md
+├── CHANGELOG.md
+└── .gitignore
 ```
 
 ## Synthetic data
@@ -295,3 +303,12 @@ This project was completed as part of **LLM Application Engineering — SDA-AIE-
 - [SDAIA Academy on GitHub](https://github.com/SDAIAAcademy)
 
 The attribution identifies the learning context. It does not imply that SDAIA Academy endorsed, certified, or authored this implementation.
+
+## Project quality and contribution guides
+
+- [Course requirement and submission checklist](docs/submission-checklist.md)
+- [Contribution guidelines](CONTRIBUTING.md)
+- [Change history](CHANGELOG.md)
+- [Automated test workflow](.github/workflows/core-tests.yml)
+
+The repository intentionally does not include a license file. Add a license only after choosing terms that reflect how you want others to use the project.
