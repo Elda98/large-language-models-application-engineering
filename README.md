@@ -1,50 +1,66 @@
 # Murshid Mini — LLM Application Engineering
 
-A four-day educational project built during **LLM Application Engineering (SDA-AIE-213)** with instructor **Meaad Al-Marri**. The project demonstrates application-engineering patterns around a controlled, synthetic service-assistant workflow.
+A four-day educational project built during **LLM Application Engineering — SDA-AIE-213**, under instructor **Meaad Al-Marri**. The project demonstrates application-engineering patterns around a fictional, synthetic service assistant.
 
-> **Submission status:** The homework notebooks and available homework evidence are present. The required cumulative core notebook at `notebooks/murshid.ipynb` is not yet present in this repository. Add the actual Colab notebook before submitting this repository.
+> **Core project:** `mode=mock`. `FakeClient` is a finite, deterministic simulator, not a live language model. The core notebook uses Python's standard library, CPU, and no paid API or model download.
 
-## Repository contents
-
-### Homework
-- [Day 1 — Real local model notebook](homework/day1/day1_real_model_Raghad.ipynb)
-- [Day 1 — Inference report](homework/day1/live_demo_result.json)
-- [Day 2 — Tool validation homework](homework/day2/day2_tools_raghad.ipynb)
-- [Day 3 — Error handling homework](homework/day3/day3_errors_raghad%20(1).ipynb)
-- [Day 4 — Real-model evaluation notebook](homework/day4/day4_evaluation_raghad.ipynb)
-- [Day 4 — Evaluation report](homework/day4/evaluation_result.json)
+## Project structure
 
 ### Core project
-- **Required cumulative notebook:** `notebooks/murshid.ipynb` — pending upload.
-- **Core results:** daily JSON outputs and the final report — not currently present in this repository.
+- [Cumulative notebook — Days 1–4](notebooks/murshid.ipynb)
+- [Synthetic dataset card](data/README.md)
+- [Synthetic dataset export](data/synthetic_data.json)
+- [Technical documentation](docs/technical.md)
+- [Project notes and limitations](docs/project-notes.md)
+- [Core results](results/core/)
 
-## How to run
+### Optional homework (separate notebooks)
+- [Day 1 — Real local model](homework/day1/day1_real_model_Raghad.ipynb) · [report](homework/day1/live_demo_result.json)
+- [Day 2 — Tools and validation](homework/day2/day2_tools_raghad.ipynb)
+- [Day 3 — Error handling](homework/day3/day3_errors_raghad.ipynb)
+- [Day 4 — Three-answer evaluation](homework/day4/day4_evaluation_raghad.ipynb) · [report](homework/day4/evaluation_result.json)
 
-1. Open a notebook in Google Colab.
-2. Save your own copy to Google Drive.
-3. Use the runtime and dependency instructions inside that notebook.
-4. Run cells from top to bottom and inspect the outputs.
-5. For the core project, use one cumulative notebook for Days 1–4. Keep optional homework notebooks separate.
-6. The Day 1 and Day 4 homework use a local `google/flan-t5-small` model and report zero external inference API calls. Their setup requires internet access to download packages/model weights; no paid API key is required.
-7. The core project is a **mock-mode educational workflow**, not a deployed service or a live model-backed application.
+The optional Day 1 and Day 4 exercises load `google/flan-t5-small` locally and report zero external inference API calls. They are distinct from the mock core.
 
-## Evaluation evidence currently committed
+## Four-day build
 
-- Day 1 local-model report: one inference result.
-- Day 2 tool homework: notebook output records 7 passing checks.
-- Day 3 error homework: notebook output demonstrates caught validation errors; rerun the notebook to regenerate a fresh execution record.
-- Day 4 local-model evaluation: three paraphrase cases, 3 keyword-indicator hits, and zero external inference API calls. The keyword indicator is a proxy, not semantic accuracy.
+| Day | Scope | Core cells |
+|---|---|---|
+| 1 | Synthetic public directory, deterministic mock client, baseline answer contract | 1–3 |
+| 2 | Ticket extraction and validation, read-only status tool, ownership checks | 4–6 |
+| 3 | Versioned prompt artifact, input guards, pipeline and ten golden cases | 7–10 |
+| 4 | Exact-match public FAQ cache, metrics, regression, report and export | 11–14 |
 
-## Scope and limitations
+## Run the core project
 
-The work uses synthetic teaching fixtures. It is not production-ready, does not provide real authentication, and must not be used with real personal or service records. Local-model homework results are distinct from the core project's mock-mode results.
+1. Open `notebooks/murshid.ipynb` in Google Colab.
+2. Select Python 3 and CPU (no accelerator).
+3. Restart the runtime and run all cells from top to bottom.
+4. Inspect each day's printed checks and the final report.
+5. Download `murshid_submission.zip` from the Colab Files panel; it contains JSON results, not the notebook itself.
+6. Keep homework notebooks separate from this cumulative core notebook.
 
-See [technical project notes](docs/project-notes.md) for the verified scope and outstanding submission items.
+The core requires no installation, model download, API key, GPU or paid service. The homework model demonstrations require internet to download Python packages and model weights, but not a paid endpoint.
+
+## Results and interpretation
+
+The core notebook records:
+- Day 1: three prescribed mock responses and the baseline output contract.
+- Day 2: five status/tool scenarios with ownership enforcement and no record mutation.
+- Day 3: ten fixed behavioral cases.
+- Day 4: three requests without cache versus one mock call with cache; cache hits `false, true, true` and a 66.7% hit rate.
+- Final report: regression results, illustrative hypothetical cost calculation and documented limitations.
+
+Python latency is local execution time, not LLM inference time. The hypothetical USD amount is an example using invented rates, not a bill or measured saving. Ten passing fixtures do not establish general reliability or production security.
+
+## Dataset and safety boundaries
+
+All directory answers, references, owners and statuses are synthetic teaching fixtures. The status tool is read-only and checks the trusted session fixture against record ownership. This is an educational authorization example, not production authentication. Never add real service records, national IDs, passwords, tokens or other people's private information.
 
 ## Attribution
 
-LLM Application Engineering — SDA-AIE-213  
-Instructor: Meaad Al-Marri  
-Training context: SDAIA Academy ([GitHub](https://github.com/SDAIAAcademy))
+**LLM Application Engineering — SDA-AIE-213**  
+Instructor: **Meaad Al-Marri**  
+Training context: **SDAIA Academy** ([GitHub](https://github.com/SDAIAAcademy))
 
-This attribution does not imply endorsement, certification, or authorship of this implementation by SDAIA Academy.
+This attribution does not imply endorsement or certification by SDAIA Academy.
