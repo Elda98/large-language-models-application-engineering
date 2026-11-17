@@ -89,7 +89,7 @@ The repository uses a restrained palette derived from the project banner. Color 
 </div>
 
 | Token | Hex | Intended use |
-|---|---|---|---|
+|---|---|---|
 | Ink | `#0B1020` | Dark backgrounds and visual depth |
 | Panel | `#15152D` | Secondary panels in visual assets |
 | Primary violet | `#8B5CF6` | Main brand emphasis and section identity |
