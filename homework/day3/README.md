@@ -1,3 +1,5 @@
-# Day 3 Homework
+# Day 3 Homework — Error Handling
 
-This folder is reserved for Day 3 homework files and generated outputs.
+[Open the Day 3 notebook](day3_errors_raghad.ipynb). It demonstrates three intentionally raised and caught `ValueError` cases, verifies the exact messages, and confirms that a valid question is accepted.
+
+The empty trailing code cell has been removed. The saved notebook output contains the three caught errors and successful checks.
