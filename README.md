@@ -1,19 +1,26 @@
 <div align="center">
 
-# Murshid Mini
+<img src="assets/murshid-hero.svg" alt="Murshid Mini — A controlled service-assistant prototype" width="100%">
 
-**A controlled service-assistant prototype**
-
-LLM Application Engineering · SDA-AIE-213  
+**LLM Application Engineering · SDA-AIE-213**  
 Instructor: Meaad Al-Marri
 
 ![Python](https://img.shields.io/badge/Python-3.9%2B-3776AB?style=flat-square&logo=python&logoColor=white)
-![Environment](https://img.shields.io/badge/Environment-Google%20Colab%20%7C%20CPU-525252?style=flat-square)
+![Environment](https://img.shields.io/badge/Google%20Colab-CPU%20only-525252?style=flat-square)
 ![Core mode](https://img.shields.io/badge/Core%20mode-Mock-0F766E?style=flat-square)
 ![Notebook](https://img.shields.io/badge/Core%20notebook-14%20cells-334155?style=flat-square)
 [![Core notebook checks](https://github.com/Elda98/large-language-models-application-engineering/actions/workflows/core-tests.yml/badge.svg?branch=main)](https://github.com/Elda98/large-language-models-application-engineering/actions/workflows/core-tests.yml)
 
 </div>
+
+<table>
+<tr>
+<td align="center" width="25%"><strong>10 / 10</strong><br><sub>Golden cases passed</sub></td>
+<td align="center" width="25%"><strong>3 → 1</strong><br><sub>Mock calls with cache</sub></td>
+<td align="center" width="25%"><strong>66.7%</strong><br><sub>Cache hit rate</sub></td>
+<td align="center" width="25%"><strong>0</strong><br><sub>External API calls in core</sub></td>
+</tr>
+</table>
 
 Murshid Mini is a four-day learning project that explores the engineering around an LLM-style service assistant: structured requests, controlled tool access, input validation, regression testing, and caching.
 
@@ -234,6 +241,8 @@ The repository includes ten offline test methods covering notebook structure and
 ```text
 .
 ├── README.md
+├── assets/
+│   └── murshid-hero.svg
 ├── notebooks/
 │   └── murshid.ipynb
 ├── data/
