@@ -1,3 +1,3 @@
-# Day 2 Homework
+# Day 2 Homework — Tool Validation
 
-This folder is reserved for Day 2 homework files and generated outputs.
+[Open the Day 2 notebook](day2_tools_raghad.ipynb). It validates structured tool arguments, dispatches an authorized read-only status lookup, and checks that the seven included validation/authorization cases pass without mutating records.
