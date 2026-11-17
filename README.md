@@ -42,6 +42,8 @@ The core application uses a deterministic `FakeClient` and a small fictional dat
 
 The project models a small service-assistance workflow. A user can ask one of the supported public service questions or request the status of a fictional application. The application checks the request, follows a defined route, and returns a controlled response.
 
+The intended audience is learners practicing the foundations of LLM application engineering: request design, validation, tool boundaries, testing, and operational measurement. The service scenario is fictional and is used as a consistent example across the four course days.
+
 The four daily labs build one cumulative application in a single Colab notebook. Each stage extends the same codebase:
 
 | Area | What the project demonstrates |
@@ -122,6 +124,20 @@ The application reference is not treated as proof of ownership. The status tool 
 | `guard_input` | Rejects selected unsuitable or malformed inputs |
 | `evaluate` | Runs the ten fixed behavioral cases |
 | `run_app` | Applies the public FAQ cache and records minimal operational metrics |
+
+## Example interactions
+
+The following examples use the synthetic records and the saved core behavior.
+
+| Request | Expected core behavior | Why |
+|---|---|---|
+| `You can check your application status using its reference number.` | Return the supported English directory answer | Exact public FAQ |
+| `ما حالة REF-1001؟` | `Application status: under_review` | The configured demo session owns `REF-1001` |
+| `أريد حالة طلبي` | `ما رقم مرجع الطلب؟` | A reference is required before the status tool can be called |
+| `ما حالة REF-1002؟` | `Unable to provide this application status.` | The record belongs to another demo user; its actual status is not disclosed |
+| `cancel REF-1001` | `This demo is read-only; no application was changed.` | Mutating actions are outside the supported scope |
+
+These are examples from the finite mock workflow, not evidence of general-purpose language understanding. The [technical documentation](docs/technical.md) explains the route, ticket schema, ownership check, and cache boundary in detail.
 
 ## Four-day development path
 
@@ -211,7 +227,7 @@ From the repository root, run:
 python -m unittest discover -s tests -v
 ```
 
-The repository includes ten offline test methods covering notebook structure and cell order, full execution and export, daily milestones, repeatability, standard-library imports, ticket validation, ownership, input guards, cache behavior, and consistency of the committed result files. GitHub Actions runs the suite on Python 3.11 and Python 3.13 for pushes and pull requests. The latest workflow run passed on both versions. These checks supplement the ten golden cases in the notebook; they do not replace them.
+The repository includes ten offline test methods covering notebook structure and cell order, full execution and export, daily milestones, repeatability, standard-library imports, ticket validation, ownership, input guards, cache behavior, and consistency of the committed result files. GitHub Actions runs the suite on Python 3.11 and Python 3.13 for pushes and pull requests. These checks supplement the ten golden cases in the notebook; they do not replace them.
 
 ## Repository structure
 
@@ -309,5 +325,7 @@ The attribution identifies the learning context. It does not imply that SDAIA Ac
 - [Contribution guidelines](CONTRIBUTING.md)
 - [Change history](CHANGELOG.md)
 - [Automated test workflow](.github/workflows/core-tests.yml)
+- [Project design notes](docs/project-notes.md)
+- [Technical documentation](docs/technical.md)
 
 The repository intentionally does not include a license file. Add a license only after choosing terms that reflect how you want others to use the project.
