@@ -88,16 +88,16 @@ The repository uses a restrained palette derived from the project banner. Color 
 <img src="assets/design-system.svg" alt="Murshid Mini color palette and typography system" width="100%">
 </div>
 
-| Token | Color | Hex | Intended use |
+| Token | Hex | Intended use |
 |---|---|---|---|
-| Ink | ![#0B1020](https://placehold.co/18x18/0B1020/0B1020.png) | `#0B1020` | Dark backgrounds and visual depth |
-| Panel | ![#15152D](https://placehold.co/18x18/15152D/15152D.png) | `#15152D` | Secondary panels in visual assets |
-| Primary violet | ![#8B5CF6](https://placehold.co/18x18/8B5CF6/8B5CF6.png) | `#8B5CF6` | Main brand emphasis and section identity |
-| Soft lavender | ![#A78BFA](https://placehold.co/18x18/A78BFA/A78BFA.png) | `#A78BFA` | Secondary highlights |
-| Blue | ![#60A5FA](https://placehold.co/18x18/60A5FA/60A5FA.png) | `#60A5FA` | Technical and information cues |
-| Cyan | ![#38BDF8](https://placehold.co/18x18/38BDF8/38BDF8.png) | `#38BDF8` | Metrics and final-stage accents |
-| Main text | ![#F8FAFC](https://placehold.co/18x18/F8FAFC/F8FAFC.png) | `#F8FAFC` | High-contrast text in dark assets |
-| Muted text | ![#94A3B8](https://placehold.co/18x18/94A3B8/94A3B8.png) | `#94A3B8` | Supporting labels and metadata |
+| Ink | `#0B1020` | Dark backgrounds and visual depth |
+| Panel | `#15152D` | Secondary panels in visual assets |
+| Primary violet | `#8B5CF6` | Main brand emphasis and section identity |
+| Soft lavender | `#A78BFA` | Secondary highlights |
+| Blue | `#60A5FA` | Technical and information cues |
+| Cyan | `#38BDF8` | Metrics and final-stage accents |
+| Main text | `#F8FAFC` | High-contrast text in dark assets |
+| Muted text | `#94A3B8` | Supporting labels and metadata |
 
 **Typography:** Inter or Segoe UI for headings and body text; monospace for code, paths, and identifiers.
 
