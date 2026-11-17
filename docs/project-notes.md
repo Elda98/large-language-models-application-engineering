@@ -84,7 +84,7 @@ Committed copies produced during the clean-namespace run are in `results/core/`.
 - Day 3: separate error-handling notebook; the uploaded GitHub copy was cleaned to remove one empty trailing code cell and renamed to a clean filename.
 - Day 4: separate three-paraphrase evaluation notebook and `evaluation_result.json`. It uses a local `google/flan-t5-small` model, reports zero external inference API calls, and includes a manual review. The `reference+number` indicator is only a keyword proxy, not semantic accuracy.
 
-The real-local-model homework remains distinct from the core `mode=mock`.
+The real-local-model homework remains distinct from the core `mode=mock`. The Day 1 and Day 4 setup cells use `sentencepiece==0.2.1` as a documented compatibility adjustment: the original `0.2.0` source distribution failed to build in Python 3.13, while the `0.2.1` platform wheel installed successfully. The model and generation/evaluation logic were not changed.
 
 ## Automated checks
 
