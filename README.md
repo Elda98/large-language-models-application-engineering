@@ -40,7 +40,9 @@ The optional Day 1 and Day 4 exercises load `google/flan-t5-small` locally and r
 5. Download `murshid_submission.zip` from the Colab Files panel; it contains JSON results, not the notebook itself.
 6. Keep homework notebooks separate from this cumulative core notebook.
 
-Run the offline checks from the repository root with `python -m unittest discover -s tests -v`.\n\nThe core requires no installation, model download, API key, GPU or paid service. The homework model demonstrations require internet to download Python packages and model weights, but not a paid endpoint.
+Run the offline checks from the repository root with `python -m unittest discover -s tests -v`.
+
+The core requires no installation, model download, API key, GPU or paid service. The homework model demonstrations require internet to download Python packages and model weights, but not a paid endpoint.
 
 ## Results and interpretation
 
