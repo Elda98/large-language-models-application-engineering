@@ -1,0 +1,26 @@
+# Python bytecode and test caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environments and local configuration
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+
+# Jupyter / Colab working files
+.ipynb_checkpoints/
+.colab/
+
+# Generated core outputs (the curated submission copies live in results/core/)
+murshid_outputs/
+murshid_submission.zip
+
+# Logs and operating-system metadata
+*.log
+.DS_Store
+Thumbs.db
