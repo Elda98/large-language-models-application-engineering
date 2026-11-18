@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="720" viewBox="0 0 1600 720" role="img" aria-labelledby="title desc">
+  <title id="title">Murshid Mini request architecture</title>
+  <desc id="desc">The request enters run_app. Exact public FAQs may use the cache. Cache misses and all other requests pass through guards, ticket validation and routing. Public questions use FakeClient. Status questions use a read-only lookup with ownership checking. Responses are validated and recorded with minimal metrics.</desc>
+  <defs>
+    <linearGradient id="line" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#8B5CF6"/>
+      <stop offset=".55" stop-color="#60A5FA"/>
+      <stop offset="1" stop-color="#38BDF8"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0 0L9 3L0 6" fill="none" stroke="#94A3B8" stroke-width="1.2"/>
+    </marker>
+    <style>
+      .h{font:700 20px Inter,Segoe UI,Arial,sans-serif;fill:#F8FAFC}
+      .s{font:500 15px Inter,Segoe UI,Arial,sans-serif;fill:#CBD5E1}
+      .k{font:700 12px Inter,Segoe UI,Arial,sans-serif;letter-spacing:1.4px}
+      .wire{fill:none;stroke:#64748B;stroke-width:2;marker-end:url(#arrow)}
+      .soft{fill:#111A2E;stroke:#64748B;stroke-opacity:.45;stroke-width:1.5}
+    </style>
+  </defs>
+  <rect width="1600" height="720" rx="28" fill="#0B1020"/>
+  <path d="M0 110H1600" stroke="#64748B" stroke-opacity=".2"/>
+  <g font-family="Inter,Segoe UI,Arial,sans-serif">
+    <text x="60" y="64" fill="#F8FAFC" font-size="28" font-weight="700">Request lifecycle</text>
+    <text x="60" y="91" fill="#94A3B8" font-size="15">A controlled route from user input to a structured response</text>
+
+    <rect x="60" y="150" width="190" height="86" rx="15" fill="#17172F" stroke="#8B5CF6" stroke-width="2"/>
+    <text x="82" y="183" class="k" fill="#C4B5FD">ENTRY</text>
+    <text x="82" y="212" class="h">User question</text>
+
+    <path d="M250 193H306" class="wire"/>
+    <rect x="310" y="150" width="170" height="86" rx="15" fill="#17172F" stroke="#A78BFA" stroke-width="2"/>
+    <text x="332" y="183" class="k" fill="#C4B5FD">ORCHESTRATION</text>
+    <text x="332" y="212" class="h">run_app</text>
+
+    <path d="M480 193H530" class="wire"/>
+    <path d="M600 143L674 193L600 243L526 193Z" fill="#1A2140" stroke="#8B5CF6" stroke-width="2"/>
+    <text x="600" y="188" text-anchor="middle" class="s">Exact</text>
+    <text x="600" y="207" text-anchor="middle" class="s">public FAQ?</text>
+
+    <path d="M674 193H730" class="wire"/>
+    <text x="696" y="178" class="k" fill="#A78BFA">YES</text>
+    <rect x="734" y="150" width="160" height="86" rx="15" fill="#17172F" stroke="#8B5CF6" stroke-width="2"/>
+    <text x="756" y="183" class="k" fill="#C4B5FD">CACHE</text>
+    <text x="756" y="212" class="h">Lookup</text>
+    <path d="M894 193H950" class="wire"/>
+    <path d="M1018 143L1092 193L1018 243L944 193Z" fill="#1A2140" stroke="#A78BFA" stroke-width="2"/>
+    <text x="1018" y="188" text-anchor="middle" class="s">Cache</text>
+    <text x="1018" y="207" text-anchor="middle" class="s">hit?</text>
+    <path d="M1092 193H1150" class="wire"/>
+    <text x="1110" y="177" class="k" fill="#A78BFA">YES</text>
+    <rect x="1154" y="150" width="180" height="86" rx="15" fill="#11283A" stroke="#38BDF8" stroke-width="2"/>
+    <text x="1176" y="183" class="k" fill="#7DD3FC">CACHE HIT</text>
+    <text x="1176" y="212" class="h">Public answer</text>
+    <path d="M1334 193H1390" class="wire"/>
+    <rect x="1394" y="150" width="150" height="86" rx="15" fill="#10283A" stroke="#38BDF8" stroke-width="2"/>
+    <text x="1416" y="183" class="k" fill="#7DD3FC">RETURN</text>
+    <text x="1416" y="212" class="h">Response</text>
+
+    <path d="M1018 243V297H600V342" class="wire"/>
+    <text x="1032" y="278" class="k" fill="#A78BFA">NO</text>
+    <path d="M600 243V342" class="wire"/>
+    <text x="615" y="292" class="k" fill="#94A3B8">NO / NON-FAQ</text>
+
+    <rect x="500" y="346" width="200" height="78" rx="15" fill="#122239" stroke="#60A5FA" stroke-width="2"/>
+    <text x="522" y="376" class="k" fill="#93C5FD">GUARD</text>
+    <text x="522" y="404" class="h">Input checks</text>
+    <path d="M700 385H760" class="wire"/>
+    <path d="M824 337L890 385L824 433L758 385Z" fill="#172A43" stroke="#60A5FA" stroke-width="2"/>
+    <text x="824" y="380" text-anchor="middle" class="s">Valid</text>
+    <text x="824" y="399" text-anchor="middle" class="s">ticket?</text>
+    <path d="M890 385H940" class="wire"/>
+    <rect x="944" y="346" width="220" height="78" rx="15" fill="#122239" stroke="#60A5FA" stroke-width="2"/>
+    <text x="966" y="376" class="k" fill="#93C5FD">ROUTING</text>
+    <text x="966" y="404" class="h">Select route</text>
+    <path d="M824 433V485H420V535" class="wire"/>
+    <text x="838" y="464" class="k" fill="#FCA5A5">NO</text>
+    <rect x="300" y="539" width="240" height="88" rx="15" fill="#2B1B2B" stroke="#F472B6" stroke-opacity=".8" stroke-width="2"/>
+    <text x="324" y="571" class="k" fill="#F9A8D4">REJECTED</text>
+    <text x="324" y="601" class="h">Controlled response</text>
+
+    <path d="M1054 424V473H780V510" class="wire"/>
+    <path d="M1054 473H1120V510" class="wire"/>
+    <path d="M1054 473H1410V510" class="wire"/>
+    <text x="802" y="463" class="k" fill="#C4B5FD">PUBLIC FAQ</text>
+    <text x="1135" y="463" class="k" fill="#93C5FD">STATUS</text>
+    <text x="1426" y="463" class="k" fill="#F9A8D4">UNSUPPORTED</text>
+
+    <rect x="660" y="514" width="240" height="88" rx="15" fill="#17172F" stroke="#8B5CF6" stroke-width="2"/>
+    <text x="684" y="546" class="k" fill="#C4B5FD">MOCK RESPONSE</text>
+    <text x="684" y="576" class="h">FakeClient</text>
+
+    <rect x="1000" y="514" width="240" height="88" rx="15" fill="#122239" stroke="#60A5FA" stroke-width="2"/>
+    <text x="1024" y="546" class="k" fill="#93C5FD">READ-ONLY TOOL</text>
+    <text x="1024" y="576" class="h">Status lookup</text>
+    <path d="M1120 602V632" fill="none" stroke="#60A5FA" stroke-width="2" marker-end="url(#arrow)"/>
+    <rect x="1000" y="635" width="240" height="60" rx="13" fill="#10283A" stroke="#38BDF8" stroke-width="1.5"/>
+    <text x="1024" y="672" class="h" font-size="18">Ownership check</text>
+
+    <rect x="1350" y="514" width="200" height="88" rx="15" fill="#2B1B2B" stroke="#F472B6" stroke-opacity=".8" stroke-width="2"/>
+    <text x="1374" y="546" class="k" fill="#F9A8D4">OUT OF SCOPE</text>
+    <text x="1374" y="576" class="h">Refusal</text>
+
+    <path d="M780 602V652H870" class="wire"/>
+    <path d="M1120 695V710H870V652" fill="none" stroke="#64748B" stroke-width="2"/>
+    <path d="M1450 602V652H870" class="wire"/>
+    <rect x="590" y="627" width="310" height="66" rx="15" fill="#111A2E" stroke="#64748B" stroke-width="1.5"/>
+    <text x="614" y="655" class="k" fill="#CBD5E1">FINALIZATION</text>
+    <text x="614" y="680" class="h">Response + minimal metrics</text>
+  </g>
+</svg>
