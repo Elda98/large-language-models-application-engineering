@@ -107,6 +107,15 @@ The repository uses a restrained palette derived from the project banner. Color 
 
 The request path is intentionally separated into validation, routing, data access, and response handling.
 
+<div align="center">
+<img src="assets/system-architecture.svg" alt="Murshid Mini request lifecycle: cache eligibility, validation, routing, read-only status lookup, ownership verification, and response metrics" width="100%">
+</div>
+
+The cache check is applied only to exact public FAQ requests. A cache miss and every non-cacheable request continue through the guarded pipeline. Status requests use a read-only lookup and an ownership check before a result can be returned.
+
+<details>
+<summary><strong>View the Mermaid source</strong></summary>
+
 ```mermaid
 flowchart TD
     A[User question] --> B[run_app]
@@ -131,6 +140,8 @@ flowchart TD
     O --> P
 ```
 
+</details>
+
 ### Cache boundary
 
 The cache is outside the core request pipeline and is eligible only for the two exact public service-directory questions. Application-status requests, ticket overrides, and other questions bypass it.
@@ -142,6 +153,12 @@ The cache key includes the question text, language, model label, prompt version,
 The application reference is not treated as proof of ownership. The status tool checks the trusted session fixture against the owner stored in the synthetic record. It does not modify records. This demonstrates an authorization decision; it is not a production authentication mechanism.
 
 ## Core capabilities
+
+<div align="center">
+<img src="assets/core-capabilities.svg" alt="Four capability areas: structured requests, controlled tool access, guarded behavior, and measured execution" width="100%">
+</div>
+
+The four areas below map directly to the implementation stages in the cumulative notebook.
 
 | Component | Responsibility |
 |---|---|
@@ -186,7 +203,7 @@ All four days are implemented in the same notebook, in the order shown below.
 
 ## Evaluation and observed results
 
-<img src="assets/section-accent.svg" alt="" width="180">
+<img src="assets/observed-results.svg" alt="Visual summary of ten passing golden cases, the three-to-one mock-call comparison, a 66.7 percent cache-hit rate, and zero external model API calls in the core" width="100%">
 
 The results below come from the saved core notebook run. Trace IDs and execution times are run-specific; the stable checks are the response codes, call counts, cache-hit sequence, and golden-test outcomes.
 
@@ -237,7 +254,8 @@ The ZIP contains the JSON outputs, not the notebook. Save and submit `notebooks/
 | Google Colab | Notebook development and execution |
 | Python standard library | Validation, timing, JSON, UUIDs, and ZIP export |
 | JSON | Synthetic data and result artifacts |
-| Mermaid | Architecture documentation |
+| SVG diagrams | Architecture, capability map, development journey, and result visualization |
+| Mermaid | Expandable source for the request-flow diagram |
 | GitHub | Source control and project submission |
 
 The core project runs on CPU. It requires no package installation, API key, paid endpoint, GPU, or model download.
@@ -276,6 +294,9 @@ The repository includes ten offline test methods covering notebook structure and
 │   ├── murshid-hero.svg
 │   ├── design-system.svg
 │   ├── four-day-journey.svg
+│   ├── system-architecture.svg
+│   ├── core-capabilities.svg
+│   ├── observed-results.svg
 │   └── section-accent.svg
 ├── notebooks/
 │   └── murshid.ipynb
