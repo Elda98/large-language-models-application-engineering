@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="300" viewBox="0 0 1500 300" role="img" aria-labelledby="title desc">
+  <title id="title">Murshid Mini engineering capabilities</title>
+  <desc id="desc">Four design areas: structured requests, controlled tool access, guarded behavior, and measured execution.</desc>
+  <rect width="1500" height="300" rx="24" fill="#0D1425"/>
+  <g font-family="Inter,Segoe UI,Arial,sans-serif">
+    <g transform="translate(30 30)">
+      <rect width="345" height="238" rx="18" fill="#17172F" stroke="#8B5CF6" stroke-opacity=".8" stroke-width="1.6"/>
+      <rect width="345" height="7" rx="3.5" fill="#8B5CF6"/>
+      <circle cx="42" cy="54" r="20" fill="#8B5CF6" fill-opacity=".18" stroke="#A78BFA"/>
+      <text x="42" y="60" text-anchor="middle" fill="#DDD6FE" font-size="17" font-weight="700">01</text>
+      <text x="28" y="112" fill="#F8FAFC" font-size="25" font-weight="700">Structured requests</text>
+      <text x="28" y="151" fill="#CBD5E1" font-size="17">Ticket extraction</text>
+      <text x="28" y="178" fill="#CBD5E1" font-size="17">Schema validation</text>
+      <text x="28" y="211" fill="#C4B5FD" font-size="13" font-weight="700">CELLS 4–6</text>
+    </g>
+    <g transform="translate(405 30)">
+      <rect width="345" height="238" rx="18" fill="#142139" stroke="#818CF8" stroke-opacity=".8" stroke-width="1.6"/>
+      <rect width="345" height="7" rx="3.5" fill="#818CF8"/>
+      <circle cx="42" cy="54" r="20" fill="#818CF8" fill-opacity=".18" stroke="#A5B4FC"/>
+      <text x="42" y="60" text-anchor="middle" fill="#E0E7FF" font-size="17" font-weight="700">02</text>
+      <text x="28" y="112" fill="#F8FAFC" font-size="25" font-weight="700">Controlled tools</text>
+      <text x="28" y="151" fill="#CBD5E1" font-size="17">Read-only status lookup</text>
+      <text x="28" y="178" fill="#CBD5E1" font-size="17">Ownership verification</text>
+      <text x="28" y="211" fill="#A5B4FC" font-size="13" font-weight="700">CELLS 4–6</text>
+    </g>
+    <g transform="translate(780 30)">
+      <rect width="345" height="238" rx="18" fill="#12243A" stroke="#60A5FA" stroke-opacity=".8" stroke-width="1.6"/>
+      <rect width="345" height="7" rx="3.5" fill="#60A5FA"/>
+      <circle cx="42" cy="54" r="20" fill="#60A5FA" fill-opacity=".16" stroke="#93C5FD"/>
+      <text x="42" y="60" text-anchor="middle" fill="#DBEAFE" font-size="17" font-weight="700">03</text>
+      <text x="28" y="112" fill="#F8FAFC" font-size="25" font-weight="700">Guarded behavior</text>
+      <text x="28" y="151" fill="#CBD5E1" font-size="17">Input guards</text>
+      <text x="28" y="178" fill="#CBD5E1" font-size="17">Ten golden cases</text>
+      <text x="28" y="211" fill="#93C5FD" font-size="13" font-weight="700">CELLS 7–10</text>
+    </g>
+    <g transform="translate(1155 30)">
+      <rect width="315" height="238" rx="18" fill="#10283A" stroke="#38BDF8" stroke-opacity=".8" stroke-width="1.6"/>
+      <rect width="315" height="7" rx="3.5" fill="#38BDF8"/>
+      <circle cx="42" cy="54" r="20" fill="#38BDF8" fill-opacity=".15" stroke="#7DD3FC"/>
+      <text x="42" y="60" text-anchor="middle" fill="#E0F2FE" font-size="17" font-weight="700">04</text>
+      <text x="28" y="112" fill="#F8FAFC" font-size="25" font-weight="700">Measured execution</text>
+      <text x="28" y="151" fill="#CBD5E1" font-size="17">FAQ cache and TTL</text>
+      <text x="28" y="178" fill="#CBD5E1" font-size="17">Metrics and final report</text>
+      <text x="28" y="211" fill="#7DD3FC" font-size="13" font-weight="700">CELLS 11–14</text>
+    </g>
+  </g>
+</svg>
